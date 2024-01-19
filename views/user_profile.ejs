@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        body {
+            position: relative;
+            top: 600px;
+            font-family: Arial, sans-serif;
+            background-image: url('/bliss_images/register_bg.png');
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+
+            margin-top: 100px;
+            max-width: 600px;
+            background-color: rgba(249, 136, 136, 0.7);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            font-family: 'Pacifico', cursive;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+
+        }
+
+        h3 {
+            color: #fff;
+        }
+
+        .user-icon {
+            font-size: 24px;
+            color: rgb(162, 15, 61);
+        }
+
+        .radio-options {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            justify-content: center;
+        }
+
+        .hidden-radio {
+            position: absolute;
+            clip: rect(0, 0, 0, 0);
+            pointer-events: none;
+        }
+
+        input[type="radio"]+label {
+            cursor: pointer;
+            background-color: wheat;
+            border-radius: 50px;
+            color: rgb(162, 15, 61);
+            padding: 3px;
+            border: none;
+            font-size: 12px;
+            width: 60px;
+            text-align: center;
+            position: relative;
+            bottom: 25px;
+        }
+
+        input[type="radio"]:checked+label {
+            background-color: rgb(162, 15, 61);
+        }
+
+        input[type="radio"]:hover+label {
+            background-color: rgb(162, 15, 61);
+            color: #fff;
+        }
+
+        form {
+            display: grid;
+            gap: 10px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .form-group {
+            position: relative;
+            left: 160px;
+        }
+
+        .drop-zone-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .drop-zone {
+            border: 2px dashed #ccc;
+            border-radius: 50%;
+            overflow: hidden;
+            width: 120px;
+            height: 120px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .drop-zone img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+
+        .drop-zone .add-new-pic,
+        .drop-zone .delete-pic {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            display: none;
+        }
+
+        .drop-zone:hover .add-new-pic,
+        .drop-zone:hover .delete-pic {
+            display: block;
+        }
+
+        /* .drop-zone p {
+            margin: 10px 0;
+            color: #888;
+        }*/
+
+        .multiple-values {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .multiple-values input {
+            padding: 8px;
+            box-sizing: border-box;
+            margin-top: 5px;
+            border-radius: 4px;
+            width: calc(55% - 18px);
+        }
+
+        .multiple-values button {
+            background-color: rgb(162, 15, 61);
+            color: white;
+            padding: 6px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 75px;
+            position: relative;
+            left: 60px;
+
+
+        }
+
+        .multiple-values button:hover {
+            background-color: rgb(162, 15, 61);
+        }
+
+        .values-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .values-list li {
+            /* background-color: #e0e0e0; */
+            padding: 8px;
+            border-radius: 20px;
+            /* margin-top: 5px; */
+            width: 50px;
+            color: #fff;
+        }
+
+        input,
+        textarea,
+        select,
+        button {
+            position: relative;
+            left: 50px;
+            width: 75%;
+            padding: 8px;
+            box-sizing: border-box;
+            margin-top: 5px;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: rgb(162, 15, 61);
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: rgb(162, 15, 61);
+        }
+    </style>
+    <title>Edit Profile</title>
+</head>
+
+<body>
+    <div class="container">
+        <h2 style="margin-top: 200px;"><i class="fas fa-user user-icon"></i>
+            <% if (user) { %>
+                <p>
+                    <%= user.name %> Profile
+                </p>
+                <% } %>
+        </h2>
+        <div id="errorDiv" style="color: orange;"></div>
+
+        <form id="editProfileForm" method="post" enctype="multipart/form-data">
+            <font color="orange">
+                <%= msg %>
+            </font>
+
+            <div class="form-group">
+                <div class="drop-zone" id="dropZone" onclick="triggerInputClick()">
+                    <img id="profileImage" src="/bliss_images/profile_dp.jpeg" alt="Profile Image" name="ProfileImage">
+                    <input type="file" name="ProfileImage" accept="image/*" onchange="handleFileUpload()"
+                        id="inputFile">
+                </div>
+            </div>
+
+
+            <label for="about">About 💞</label>
+            <textarea id="about" name="about" placeholder="tell me something..."></textarea>
+
+            <label for="dob">Date of Birth 📆</label>
+            <input type="date" value="<%= user.dateOfBirth%>" id="dob" name="dob">
+
+
+            <label for="email">Email </label>
+            <input type="email" value="<%= user.email %>" id="dob" name="email">
+
+
+            <div class="multiple-values" id="interestsContainer">
+                <label for="interests">Interests 💖</label>
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" id="interests" name="interests">
+                    <!-- <button type="button" onclick="addInterest()">Add</button> -->
+                </div>
+                <ul class="values-list" id="interestsList" name="interests"></ul>
+            </div>
+
+            <div class="multiple-values" id="languagesContainer">
+                <label for="languages">Languages </label>
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" id="languages" name="languages">
+                    <!-- <button type="button" onclick="addLanguage()">Add</button> -->
+                </div>
+                <ul class="values-list" id="languagesList" name="languages"></ul>
+            </div>
+
+            <label for="gender">Gender 🧑‍🦱👧</label>
+            <select id="gender" name="gender">
+                <option value="male" name="gender">Male</option>
+                <option value="female" name="gender">Female</option>
+                <option value="other" name="gender">Other</option>
+            </select>
+
+            <label for="height">Height (in cm) </label>
+            <input type="number" id="height" name="height">
+
+            <h2><i class="fas fa-user user-icon"></i> Tell us more about you ✨</h2>
+            <h3>Is Working out your thing? Tell us!!</h3>
+            <div class="radio-options" name="working">
+                <input type="radio" id="yesOption" name="working" value="yes" class="hidden-radio">
+                <label for="yesOption">Yes</label>
+                <input type="radio" id="noOption" name="working" value="no" class="hidden-radio">
+                <label for="noOption">No</label>
+                <input type="radio" id="maybeOption" name="working" value="maybe" class="hidden-radio">
+                <label for="maybeOption">Maybe I will</label>
+            </div>
+
+            <h3>Are you guided by stars? What's your zodiac sign??</h3>
+            <div class="radio-options" name="ZodiacSign">
+                <input type="radio" id="Option1" name="ZodiacSign" value="Aries" class="hidden-radio">
+                <label for="Option1">Aries</label>
+                <input type="radio" id="Option2" name="ZodiacSign" value="Taurus" class="hidden-radio">
+                <label for="Option2">Taurus</label>
+                <input type="radio" id="Option3" name="ZodiacSign" value="Gemini" class="hidden-radio">
+                <label for="Option3">Gemini</label>
+                <input type="radio" id="Option4" name="ZodiacSign" value="Cancer" class="hidden-radio">
+                <label for="Option4">Cancer</label>
+            </div>
+
+            <div class="radio-options" name="ZodiacSign">
+
+                <input type="radio" id="Option5" name="ZodiacSign" value="Leo" class="hidden-radio">
+                <label for="Option5">Leo</label>
+                <input type="radio" id="Option6" name="ZodiacSign" value="Virgo" class="hidden-radio">
+                <label for="Option6">Virgo</label>
+                <input type="radio" id="Option7" name="ZodiacSign" value="Libra" class="hidden-radio">
+                <label for="Option7">Libra</label>
+                <input type="radio" id="Option8" name="ZodiacSign" value="Scorpio" class="hidden-radio">
+                <label for="Option8">Scorpio</label>
+            </div>
+
+            <div class="radio-options" name="ZodiacSign">
+                <input type="radio" id="Option9" name="ZodiacSign" value="Sagittarius" class="hidden-radio">
+                <label for="Option9">Sagittarius</label>
+                <input type="radio" id="Option10" name="ZodiacSign" value="Capricorn" class="hidden-radio">
+                <label for="Option10">Capricorn</label>
+                <input type="radio" id="Option11" name="ZodiacSign" value="Aquarius" class="hidden-radio">
+                <label for="Option11">Aquarius</label>
+                <input type="radio" id="Option12" name="ZodiacSign" value="Pisces" class="hidden-radio">
+                <label for="Option12">Pisces</label>
+            </div>
+
+            <div class="multiple-values" id="musicContainer">
+                <label for="music">Music makes your night unforgettable !!🎶 </label>
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" id="music" name="music">
+                    <!-- <button type="button" onclick="addMusic()">Add</button> -->
+                </div>
+                <ul class="values-list" id="musicList" name="music"></ul>
+            </div>
+
+
+            <div class="multiple-values" id="hobbiesContainer">
+                <label for="hobbies">What are your hobbies? 🎼💃</label>
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" id="hobbies" name="hobbies">
+                    <!-- <button type="button" onclick="addHobbies()">Add</button> -->
+                </div>
+                <ul class="values-list" id="hobbiesList" name="hobbies"></ul>
+            </div>
+
+            <div class="multiple-values" id="qualificationContainer">
+                <label for="qualification">What is your highest qualification? 📑</label>
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" id="qualification" name="qualification">
+                    <!-- <button type="button" onclick="addQualification()">Add</button> -->
+                </div>
+                <ul class="values-list" id="qualificationList" name="qualification"></ul>
+            </div>
+
+            <div class="multiple-values" id="bodyTypeContainer">
+                <label for="bodyType">What is your body type? 🧏‍♂️</label>
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" id="bodyType" name="bodyType">
+                    <!-- <button type="button" onclick="addBodyType()">Add</button> -->
+                </div>
+                <ul class="values-list" id="bodyTypeList" name="bodyType"></ul>
+            </div>
+
+            <div class="multiple-values" id="petContainer">
+                <label for="pet">What is your favorite pet? 🐶</label>
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" id="pet" name="pet">
+                    <!-- <button type="button" onclick="addPet()">Add</button> -->
+                </div>
+                <ul class="values-list" id="petList" name="pet"></ul>
+            </div>
+
+            <div class="multiple-values" id="professionContainer">
+                <label for="profession">What is your profession or job? 👩‍💻👩‍🎨</label>
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" id="profession" name="profession">
+                    <!-- <button type="button" onclick="addProfession()">Add</button> -->
+                </div>
+                <ul class="values-list" id="professionList" name="profession"></ul>
+            </div>
+
+            <button type="submit" >Update Profile</button>
+        </form>
+    </div>
+
+
+    <script>
+        function handleFileUpload() {
+            var input = document.getElementById('inputFile');
+            var img = document.getElementById('profileImage');
+
+            var file = input.files[0];
+
+            if (file) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    img.src = e.target.result;
+                };
+
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function triggerInputClick() {
+            document.getElementById('inputFile').click();
+        }
+
+       
+
+        function addInterest() {
+            var interestInput = document.getElementById('interests');
+            var interestsList = document.getElementById('interestsList');
+            var listItem = document.createElement('li');
+            listItem.textContent = interestInput.value;
+
+            var deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.onclick = function () {
+                interestsList.removeChild(listItem);
+            };
+
+            listItem.appendChild(deleteButton);
+            interestsList.appendChild(listItem);
+            interestInput.value = '';
+        }
+
+        // Modify addLanguage function to include delete button
+        function addLanguage() {
+            var languageInput = document.getElementById('languages');
+            var languagesList = document.getElementById('languagesList');
+            var listItem = document.createElement('li');
+            listItem.textContent = languageInput.value;
+
+            var deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.onclick = function () {
+                languagesList.removeChild(listItem);
+            };
+
+            listItem.appendChild(deleteButton);
+            languagesList.appendChild(listItem);
+            languageInput.value = '';
+        }    // Modify addMusic function to include delete button
+        function addMusic() {
+            var musicInput = document.getElementById('music');
+            var musicList = document.getElementById('musicList');
+            var listItem = document.createElement('li');
+            listItem.textContent = musicInput.value;
+
+            var deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.onclick = function () {
+                musicList.removeChild(listItem);
+            };
+
+            listItem.appendChild(deleteButton);
+            musicList.appendChild(listItem);
+            musicInput.value = '';
+        }
+
+        // Modify addHobbies function to include delete button
+        function addHobbies() {
+            var hobbiesInput = document.getElementById('hobbies');
+            var hobbiesList = document.getElementById('hobbiesList');
+            var listItem = document.createElement('li');
+            listItem.textContent = hobbiesInput.value;
+
+            var deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.onclick = function () {
+                hobbiesList.removeChild(listItem);
+            };
+
+            listItem.appendChild(deleteButton);
+            hobbiesList.appendChild(listItem);
+            hobbiesInput.value = '';
+        }
+        function addQualification() {
+            var qualificationInput = document.getElementById('qualification');
+            var qualificationList = document.getElementById('qualificationList');
+            var listItem = document.createElement('li');
+            listItem.textContent = qualificationInput.value;
+
+            var deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.onclick = function () {
+                qualificationList.removeChild(listItem);
+            };
+
+            listItem.appendChild(deleteButton);
+            qualificationList.appendChild(listItem);
+            qualificationInput.value = '';
+        }
+        function addBodyType() {
+            var bodyTypeInput = document.getElementById('bodyType');
+            var bodyTypeList = document.getElementById('bodyTypeList');
+            var listItem = document.createElement('li');
+            listItem.textContent = bodyTypeInput.value;
+
+            var deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.onclick = function () {
+                bodyTypeList.removeChild(listItem);
+            };
+
+            listItem.appendChild(deleteButton);
+            bodyTypeList.appendChild(listItem);
+            bodyTypeInput.value = '';
+        }
+        function addPet() {
+            var petInput = document.getElementById('pet');
+            var petList = document.getElementById('petList');
+            var listItem = document.createElement('li');
+            listItem.textContent = petInput.value;
+
+            var deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.onclick = function () {
+                petList.removeChild(listItem);
+            };
+
+            listItem.appendChild(deleteButton);
+            petList.appendChild(listItem);
+            petInput.value = '';
+        }
+        function addProfession() {
+            var professionInput = document.getElementById('profession');
+            var professionList = document.getElementById('professionList');
+            var listItem = document.createElement('li');
+            listItem.textContent = professionInput.value;
+
+            var deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.onclick = function () {
+                professionList.removeChild(listItem);
+            };
+
+            listItem.appendChild(deleteButton);
+            professionList.appendChild(listItem);
+            professionInput.value = '';
+        }
+        function addCompany() {
+            var companyInput = document.getElementById('company');
+            var companyList = document.getElementById('companyList');
+            var listItem = document.createElement('li');
+            listItem.textContent = companyInput.value;
+
+            var deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.onclick = function () {
+                companyList.removeChild(listItem);
+            };
+
+            listItem.appendChild(deleteButton);
+            companyList.appendChild(listItem);
+            companyInput.value = '';
+        }
+
+        var dropZone = document.getElementById('dropZone');
+
+        dropZone.addEventListener('dragover', function (e) {
+            e.preventDefault();
+            dropZone.classList.add('dragged-over');
+        });
+
+        dropZone.addEventListener('dragleave', function () {
+            dropZone.classList.remove('dragged-over');
+        });
+
+        dropZone.addEventListener('drop', function (e) {
+            e.preventDefault();
+            dropZone.classList.remove('dragged-over');
+            var fileInput = document.getElementById('profileImage');
+            fileInput.files = e.dataTransfer.files;
+            handleFileUpload();
+        });
+
+        function addInterest() {
+            var interestInput = document.getElementById('interests');
+            var interestsList = document.getElementById('interestsList');
+            var listItem = document.createElement('li');
+            listItem.textContent = interestInput.value;
+
+            var deleteIcon = document.createElement('i');
+            deleteIcon.className = 'fas fa-trash-alt';
+            deleteIcon.style.cursor = 'pointer';
+            deleteIcon.style.marginLeft = '8px';
+            deleteIcon.style.color = 'black';
+            deleteIcon.style.fontSize = '16px';
+
+            deleteIcon.addEventListener('mouseover', function () {
+                deleteIcon.style.color = 'red'; // Change color on hover if desired
+            });
+
+            deleteIcon.addEventListener('mouseout', function () {
+                deleteIcon.style.color = 'black';
+            });
+
+            deleteIcon.onclick = function () {
+                interestsList.removeChild(listItem);
+            };
+
+            listItem.appendChild(deleteIcon);
+            interestsList.appendChild(listItem);
+            interestInput.value = '';
+        }
+
+        // Modify addLanguage function to include delete icon
+        function addLanguage() {
+            var languageInput = document.getElementById('languages');
+            var languagesList = document.getElementById('languagesList');
+            var listItem = document.createElement('li');
+            listItem.textContent = languageInput.value;
+
+            var deleteIcon = document.createElement('i');
+            deleteIcon.className = 'fas fa-trash-alt';
+            deleteIcon.style.cursor = 'pointer';
+            deleteIcon.style.marginLeft = '8px';
+            deleteIcon.style.color = 'black';
+            deleteIcon.style.fontSize = '16px';
+
+            deleteIcon.addEventListener('mouseover', function () {
+                deleteIcon.style.color = 'red'; // Change color on hover if desired
+            });
+
+            deleteIcon.addEventListener('mouseout', function () {
+                deleteIcon.style.color = 'black';
+            });
+
+            deleteIcon.onclick = function () {
+                languagesList.removeChild(listItem);
+            };
+
+            listItem.appendChild(deleteIcon);
+            languagesList.appendChild(listItem);
+            languageInput.value = '';
+        }
+
+        // Modify addMusic function to include delete icon
+        function addMusic() {
+            var musicInput = document.getElementById('music');
+            var musicList = document.getElementById('musicList');
+            var listItem = document.createElement('li');
+            listItem.textContent = musicInput.value;
+
+            var deleteIcon = document.createElement('i');
+            deleteIcon.className = 'fas fa-trash-alt';
+            deleteIcon.style.cursor = 'pointer';
+            deleteIcon.style.marginLeft = '8px';
+            deleteIcon.style.color = 'black';
+            deleteIcon.style.fontSize = '16px';
+
+            deleteIcon.addEventListener('mouseover', function () {
+                deleteIcon.style.color = 'red'; // Change color on hover if desired
+            });
+
+            deleteIcon.addEventListener('mouseout', function () {
+                deleteIcon.style.color = 'black';
+            });
+
+            deleteIcon.onclick = function () {
+                musicList.removeChild(listItem);
+            };
+
+            listItem.appendChild(deleteIcon);
+            musicList.appendChild(listItem);
+            musicInput.value = '';
+        }
+
+        // Modify addHobbies function to include delete icon
+        function addHobbies() {
+            var hobbiesInput = document.getElementById('hobbies');
+            var hobbiesList = document.getElementById('hobbiesList');
+            var listItem = document.createElement('li');
+            listItem.textContent = hobbiesInput.value;
+
+            var deleteIcon = document.createElement('i');
+            deleteIcon.className = 'fas fa-trash-alt';
+            deleteIcon.style.cursor = 'pointer';
+            deleteIcon.style.marginLeft = '8px';
+            deleteIcon.style.color = 'black';
+            deleteIcon.style.fontSize = '16px';
+
+            deleteIcon.addEventListener('mouseover', function () {
+                deleteIcon.style.color = 'red'; // Change color on hover if desired
+            });
+
+            deleteIcon.addEventListener('mouseout', function () {
+                deleteIcon.style.color = 'black';
+            });
+
+            deleteIcon.onclick = function () {
+                hobbiesList.removeChild(listItem);
+            };
+
+            listItem.appendChild(deleteIcon);
+            hobbiesList.appendChild(listItem);
+            hobbiesInput.value = '';
+        }
+
+        // Modify addQualification function to include delete icon
+        function addQualification() {
+            var qualificationInput = document.getElementById('qualification');
+            var qualificationList = document.getElementById('qualificationList');
+            var listItem = document.createElement('li');
+            listItem.textContent = qualificationInput.value;
+
+            var deleteIcon = document.createElement('i');
+            deleteIcon.className = 'fas fa-trash-alt';
+            deleteIcon.style.cursor = 'pointer';
+            deleteIcon.style.marginLeft = '8px';
+            deleteIcon.style.color = 'black';
+            deleteIcon.style.fontSize = '16px';
+
+            deleteIcon.addEventListener('mouseover', function () {
+                deleteIcon.style.color = 'red'; // Change color on hover if desired
+            });
+
+            deleteIcon.addEventListener('mouseout', function () {
+                deleteIcon.style.color = 'black';
+            });
+
+            deleteIcon.onclick = function () {
+                qualificationList.removeChild(listItem);
+            };
+
+            listItem.appendChild(deleteIcon);
+            qualificationList.appendChild(listItem);
+            qualificationInput.value = '';
+        }
+
+        // Modify addBodyType function to include delete icon
+        function addBodyType() {
+            var bodyTypeInput = document.getElementById('bodyType');
+            var bodyTypeList = document.getElementById('bodyTypeList');
+            var listItem = document.createElement('li');
+            listItem.textContent = bodyTypeInput.value;
+
+            var deleteIcon = document.createElement('i');
+            deleteIcon.className = 'fas fa-trash-alt';
+            deleteIcon.style.cursor = 'pointer';
+            deleteIcon.style.marginLeft = '8px';
+            deleteIcon.style.color = 'black';
+            deleteIcon.style.fontSize = '16px';
+
+            deleteIcon.addEventListener('mouseover', function () {
+                deleteIcon.style.color = 'red'; // Change color on hover if desired
+            });
+
+            deleteIcon.addEventListener('mouseout', function () {
+                deleteIcon.style.color = 'black';
+            });
+
+            deleteIcon.onclick = function () {
+                bodyTypeList.removeChild(listItem);
+            };
+
+            listItem.appendChild(deleteIcon);
+            bodyTypeList.appendChild(listItem);
+            bodyTypeInput.value = '';
+        }
+
+        // Modify addPet function to include delete icon
+        function addPet() {
+            var petInput = document.getElementById('pet');
+            var petList = document.getElementById('petList');
+            var listItem = document.createElement('li');
+            listItem.textContent = petInput.value;
+
+            var deleteIcon = document.createElement('i');
+            deleteIcon.className = 'fas fa-trash-alt';
+            deleteIcon.style.cursor = 'pointer';
+            deleteIcon.style.marginLeft = '8px';
+            deleteIcon.style.color = 'black';
+            deleteIcon.style.fontSize = '16px';
+
+            deleteIcon.addEventListener('mouseover', function () {
+                deleteIcon.style.color = 'red'; // Change color on hover if desired
+            });
+
+            deleteIcon.addEventListener('mouseout', function () {
+                deleteIcon.style.color = 'black';
+            });
+
+            deleteIcon.onclick = function () {
+                petList.removeChild(listItem);
+            };
+
+            listItem.appendChild(deleteIcon);
+            petList.appendChild(listItem);
+            petInput.value = '';
+        }
+
+        // Modify addProfession function to include delete icon
+        function addProfession() {
+            var professionInput = document.getElementById('profession');
+            var professionList = document.getElementById('professionList');
+            var listItem = document.createElement('li');
+            listItem.textContent = professionInput.value;
+
+            var deleteIcon = document.createElement('i');
+            deleteIcon.className = 'fas fa-trash-alt';
+            deleteIcon.style.cursor = 'pointer';
+            deleteIcon.style.marginLeft = '8px';
+            deleteIcon.style.color = 'black';
+            deleteIcon.style.fontSize = '16px';
+
+            deleteIcon.addEventListener('mouseover', function () {
+                deleteIcon.style.color = 'red'; // Change color on hover if desired
+            });
+
+            deleteIcon.addEventListener('mouseout', function () {
+                deleteIcon.style.color = 'black';
+            });
+
+            deleteIcon.onclick = function () {
+                professionList.removeChild(listItem);
+            };
+
+            listItem.appendChild(deleteIcon);
+            professionList.appendChild(listItem);
+            professionInput.value = '';
+        }
+
+        // Modify addCompany function to include delete icon
+        function addCompany() {
+            var companyInput = document.getElementById('company');
+            var companyList = document.getElementById('companyList');
+            var listItem = document.createElement('li');
+            listItem.textContent = companyInput.value;
+
+            var deleteIcon = document.createElement('i');
+            deleteIcon.className = 'fas fa-trash-alt';
+            deleteIcon.style.cursor = 'pointer';
+            deleteIcon.style.marginLeft = '8px';
+            deleteIcon.style.color = 'black';
+            deleteIcon.style.fontSize = '16px';
+
+            deleteIcon.addEventListener('mouseover', function () {
+                deleteIcon.style.color = 'red'; // Change color on hover if desired
+            });
+
+            deleteIcon.addEventListener('mouseout', function () {
+                deleteIcon.style.color = 'black';
+            });
+
+            deleteIcon.onclick = function () {
+                companyList.removeChild(listItem);
+            };
+
+            listItem.appendChild(deleteIcon);
+            companyList.appendChild(listItem);
+            companyInput.value = '';
+        }
+
+    </script>
+
+
+</body>
+
+</html>

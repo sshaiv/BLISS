@@ -1,0 +1,74 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>club_register</title>
+    <link rel="stylesheet" href="/stylesheets/club_register.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Registration</h1>
+        <form id="registration-form" method="post" enctype="multipart/form-data">
+            <!-- ... (other input fields) -->
+            <input type="text" placeholder="Owner_Name" name="Owner_name" required>
+            <input type="text" placeholder="Owner_Aadhar" name="Owner_Aadhar" required>
+            <input type="email" placeholder="Email Address" name="email" required>
+            <input type="text" placeholder="Club_Name" name="Club_name" required>
+            <input type="number" placeholder="phone number...+91" name="phone" required>
+            <input type="password" placeholder="password" name="password" required>
+            <label class="drop-area" for="club-banner-input">
+                <input type="file" accept="image/*" id="club-banner-input" name="Club_banner" hidden>
+                <div class="img-view">
+                    <img src="/bliss_images/icon.png" name="Club_banner">
+                    <p>Club Banner <b> upload here</b></p>
+                </div>
+            </label>
+
+            <label class="drop-area" for="user-dp-input">
+                <input type="file" accept="image/*" id="user-dp-input" name="Owner_dp" hidden>
+                <div class="img-view">
+                    <img src="/bliss_images/icon.png" name="Owner_dp">
+                    <p>User Dp <b>upload here</b></p>
+                </div>
+            </label>
+
+            <input type="file" id="myFile" name="Club_docs">
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const dropAreas = document.querySelectorAll(".drop-area");
+
+            dropAreas.forEach(dropArea => {
+                const inputFile = dropArea.querySelector("input[type='file']");
+                const imageView = dropArea.querySelector(".img-view");
+                const imgElement = imageView.querySelector("img");
+
+                inputFile.addEventListener("change", uploadImage);
+
+                function uploadImage() {
+                    const file = inputFile.files[0];
+
+                    if (file) {
+                        const reader = new FileReader();
+
+                        reader.onload = function (e) {
+                            const imgLink = e.target.result;
+                            imgElement.src = imgLink;
+                        };
+
+                        reader.readAsDataURL(file);
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

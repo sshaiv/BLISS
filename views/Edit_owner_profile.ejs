@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Edit Owner Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            /* background-color: #f2f2f2; */
+            background-image:url('/bliss_images/register_bg.png');
+        }
+
+        .container {
+            max-width: 350px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-header {
+            text-align: center;
+            position: relative;
+        }
+
+        .profile-img {
+            width: 300px;
+            height: 150px;
+            object-fit: cover;
+            border-radius:5%;
+        }
+
+        .small-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+
+        .profile-info {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .update-button {
+            display: block;
+            width: 100%;
+            height: 50px;
+            background-color: rgb(126, 12, 48);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+        .update-button:hover {
+            cursor: pointer;
+            font-size:large ;
+        }
+
+        .profile-info input,
+        .profile-info textarea,
+        .profile-info select {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        .uploaded-document {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+
+
+<div class="container">
+    <h1>Edit Owner Profile</h1>
+    <div class="profile-header">
+        <img src="/bliss_images/bg.png" alt="Background DP" class="profile-img">
+        <img src="/bliss_images/icon.png" alt="Small DP" class="small-img">
+    </div>
+
+    <div class="profile-info">
+        <h3>Owner Name:</h3>
+        <input type="text" placeholder="Owner Name" value="Owner_Name">
+        <h3>Club Name:</h3>
+        <input type="text" placeholder="Club Name" value="Club_Name">
+        
+        <label for="uploadFile">Upload Document Here <i style='font-size:24px' class='fas'>&#xf359;</i></label>
+        <input type="file" id="uploadFile" name="uploadFile" onchange="displayFileName()">
+        <div class="uploaded-document" id="fileName"></div>
+        <h3>About </h3>
+        <textarea placeholder="About">About the owner...</textarea>
+    </div>
+
+    <button class="update-button" onclick="submitForm()">Update Profile</button>
+</div>
+
+<script>
+    function displayFileName() {
+        const fileInput = document.getElementById("uploadFile");
+        const fileNameDisplay = document.getElementById("fileName");
+        fileNameDisplay.textContent = `Uploaded Document: ${fileInput.files[0].name}`;
+    }
+
+    function submitForm() {
+        // Add your logic here to handle the form submission (e.g., AJAX request or form submission)
+        alert("Form submitted! (Note: You need server-side code to handle file uploads)");
+    }
+</script>
+
+</body>
+</html>

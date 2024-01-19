@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill and Payment</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image:url('/bliss_images/register_bg.png');
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fef0f0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            position: relative;
+            top: 40px;
+        }
+
+        .payment-icons {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        button {
+            background-color:  rgb(126, 12, 48);
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+           
+        }
+
+
+        button:hover {
+            color:  rgb(126, 12, 48);
+            background-color: #fff;
+        }
+
+        .bill {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .total {
+            margin-top: 20px;
+            text-align: right;
+            color: #555;
+        }
+
+        .payment-options {
+            margin-top: 20px;
+            /* text-align: center; */
+        }
+
+        h2 {
+            color: #333;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="bill">
+            <h2>Bill Details</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Amount</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Product A</td>
+                        <td>$20</td>
+                        <td>2</td>
+                        <td>$40</td>
+                    </tr>
+                    <tr>
+                        <td>Product B</td>
+                        <td>$30</td>
+                        <td>1</td>
+                        <td>$30</td>
+                    </tr>
+                    <!-- Add more rows as needed -->
+                </tbody>
+            </table>
+
+            <div class="total">
+                <p>Total Amount: $70</p>
+                <p>Discount: -$10</p>
+                <p>GST (18%): $10.80</p>
+                <p>Grand Total: $70.80</p>
+            </div>
+        </div>
+        <div class="payment-options">
+            <h2>Select Payment Method:</h2>
+            <form action="#" method="post">
+                <label>
+                    <input type="radio" name="paymentMethod" value="gpay">
+                    <i class="fab fa-google-pay payment-icons" style="color: #4285F4;"></i> Google Pay (GPay)
+                </label>
+                <label>
+                    <input type="radio" name="paymentMethod" value="phonepay">
+                    <i class="fas fa-mobile-alt payment-icons" style="color: #25D366;"></i> PhonePe
+                </label>
+                <label>
+                    <input type="radio" name="paymentMethod" value="amazonpay">
+                    <i class="fab fa-amazon-pay payment-icons" style="color: #FF9900;"></i> Amazon Pay
+                </label>
+                <label>
+                    <input type="radio" name="paymentMethod" value="paypal">
+                    <i class="fab fa-paypal payment-icons" style="color: #00457C;"></i> PayPal
+                </label>
+                <label>
+                    <input type="radio" name="paymentMethod" value="bhimupi">
+                    <i class="fas fa-money-check payment-icons" style="color: #0056a2;"></i> BHIM UPI
+                </label>
+
+              
+
+                <button type="submit">Proceed to Pay</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            /* background-color: #f0f0f0; */
+            background-image:url('/bliss_images/register_bg.png');
+        }
+
+        header {
+            color: #333;
+           
+            padding: 10px;
+            text-align: center;
+        }
+        h1{
+            text-align: center;
+        }
+
+        .bill-container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #f7ecec;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .total {
+            margin-top: 20px;
+            text-align: right;
+        }
+
+        .payment-options {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            color: rgb(126, 12, 48);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+      
+    </header>
+
+    <div class="bill-container">
+        <h1>Bill</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Amount</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Product A</td>
+                    <td>$20</td>
+                    <td>2</td>
+                    <td>$40</td>
+                </tr>
+                <tr>
+                    <td>Product B</td>
+                    <td>$30</td>
+                    <td>1</td>
+                    <td>$30</td>
+                </tr>
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+
+        <div class="total">
+            <p>Total Amount: $70</p>
+            <p>Discount: -$10</p>
+            <p>GST (18%): $10.80</p>
+            <p>Grand Total: $70.80</p>
+        </div>
+
+        <div class="payment-options">
+            <h2>Pay via <a href="#">UPI</a></h2>
+        </div>
+
+        <!-- <button>Print Bill</button> -->
+    </div>
+
+</body>
+</html>

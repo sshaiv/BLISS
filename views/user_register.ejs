@@ -1,0 +1,83 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="/stylesheets/register.css">
+    <script>
+        function validatePhone() {
+            var phoneInput = document.getElementsByName("phone")[0];
+            var errorDiv = document.getElementById("errorDiv");
+            var regex = /^[0-9]{10}$/;
+
+            if (!regex.test(phoneInput.value)) {
+                errorDiv.innerHTML = "Invalid phone number";
+                return false;
+            } else {
+                errorDiv.innerHTML = "";
+                return true;
+            }
+        }
+    </script>
+</head>
+
+<!-- <body>
+    <div class="container">
+        <h1>Registration</h1>
+        <font color="orange">
+            
+        </font>
+        <font color="orange">
+            
+        </font>
+        <form id="registration-form" method="post">
+            <input type="text" placeholder="Full Name" name="name" required>
+            <input type="text" placeholder="Email Address" name="email" required>
+            <select name="role" required>
+                <option value="" disabled selected>Select role</option>
+                <option value="club">Club</option>
+                <option value="user">User</option>
+            </select>
+            <input type="text" placeholder="Phone number...+91" name="phone" required>
+            <input type="text" placeholder="DD/MM/YYYY" name="dateOfBirth" required>
+            <select name="gender" required>
+                <option value="" disabled selected>Select Gender</option>
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+                <option value="other">Other</option>
+            </select>
+            <input type="password" placeholder="Password" name="password" required>
+            <button type="submit" id="btnSubmit">Register</button>
+        </form>
+    </div>
+</body> -->
+
+<body>
+    <div class="container">
+        <h1>Registration</h1>
+        <div id="errorDiv" style="color: orange;"></div>
+        <font color="orange"><%= msg %></font>
+        <form id="registration-form" method="post" onsubmit="return validatePhone()">
+            <input type="text" placeholder="Full Name" name="name" required>
+            <input type="email" placeholder="Email Address" name="email" required>
+            <select name="role" required>
+                <option value="" disabled selected>Select role</option>
+                <option value="club">Club</option>
+                <option value="user">User</option>
+            </select>
+            <input type="text" placeholder="Phone number...+91" name="phone" required>
+            <input type="date" placeholder="DD/MM/YYYY" name="dateOfBirth" required>
+            <select name="gender" required>
+                <option value="" disabled selected>Select Gender</option>
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+                <option value="other">Other</option>
+            </select>
+            <input type="password" placeholder="Password" name="password" required>
+            <button type="submit" id="btnSubmit">Register</button>
+        </form>
+    </div>
+</body>
+
+</html>

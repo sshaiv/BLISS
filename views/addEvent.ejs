@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Add Event</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('/bliss_images/register_bg.png');
+        }
+
+        .container {
+            max-width: 450px;
+            margin: 20px auto;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-family: 'Pacifico', cursive;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px; 
+            color: #b14242;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12.5px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid rgb(214, 177, 109);
+            border-radius: 25px;
+            background-color: rgb(232, 230, 218);
+        }
+
+        /* Hidden file input styles */
+        .hidden-input {
+            display: none;
+        }
+
+        .custom-file-input {
+            display: inline-flex;
+            align-items: center;
+            font-size: 10px;
+            color: black;
+            border: none;
+            border-radius: 11px;
+            cursor: pointer;
+            position: relative;
+            top: 50px;
+            left: 80px;
+            width: 20%; /* Set width to a percentage for responsiveness */
+            max-width: 100px; /* Set a maximum width if needed */
+            margin: 0 auto; /* Center the button */
+        }
+
+        .icon {
+            font-size: 50px; /* Adjust the font-size to increase the size of the icon */
+            margin-right: 20px; /* Adjust the spacing between icon and text */
+        }
+
+        .photo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .photo-preview {
+            width: 100px; /* Adjust the width and height as needed */
+            height: 100px;
+            border-radius: 25%;
+            object-fit: cover;
+            position: relative;
+            left: 50px;
+            bottom: 25px;
+        }
+
+        button {
+            background-color: rgb(162 15 61);
+            color: #fff;
+            padding: 15px 5%; /* Adjust the padding as needed */
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            width: 90%; /* Set width to a percentage for responsiveness */
+            max-width: 500px; /* Set a maximum width if needed */
+            position: relative;
+            left: 25px;
+        }
+
+        button:hover {
+            background-color: rgb(100, 7, 36);
+        }
+
+        #top {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="top">
+            <i class="fas fa-plus fa-2x" style="color: #8a0029; position: relative; top: 60px;"></i>
+            <h1><% if (user) { %>
+                <p>Add Event in <%= user.Club_name %>
+                </p>
+                <% } %></h1>
+        </div>
+        <form>
+            <label for="eventDescription"><i class="fas fa-info-circle"></i>Title of Event: </label>
+            <input type="text" id="eventTitle" name="EventTitle" required>
+
+            <!-- Hidden file input -->
+            <input type="file" id="eventPhoto" name="EventPhoto" accept="image/*" size="2000000" class="hidden-input">
+
+            <!-- Custom file input button with icon -->
+            <label for="eventPhoto" class="custom-file-input">
+                <span class="icon">&#128247;</span> <!-- Unicode for a camera icon -->
+                Add Photo
+            </label>
+
+            <!-- Image preview -->
+            <div class="photo-container">
+                <img id="photoPreview" class="photo-preview" name="EventPhoto" src="#">
+            </div>
+
+            <label for="eventDescription"><i class="fas fa-info-circle"></i> Event Description:</label>
+            <textarea id="eventDescription" name="EventDescription" rows="4" required></textarea>
+
+            <label for="eventDate"><i class="fas fa-calendar-alt"></i> Date:</label>
+            <input type="date" id="eventDate" name="EventDate" required>
+
+            <label for="eventTime"><i class="fas fa-clock"></i> Time:</label>
+            <input type="time" id="eventTime" name="EventTime" required>
+
+            <label for="eventLocation"><i class="fas fa-map-marker-alt"></i> Location:</label>
+            <input type="text" id="eventLocation" name="EventLocation" required>
+
+            <button type="submit"><a href="/addEventView">Add Event</a></button>
+        </form>
+    </div>
+
+    <script>
+        // JavaScript to handle file input and preview
+        document.getElementById('eventPhoto').addEventListener('change', function (event) {
+            const input = event.target;
+            const preview = document.getElementById('photoPreview');
+
+            const file = input.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    preview.src = e.target.result;
+                };
+
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+
+</html>

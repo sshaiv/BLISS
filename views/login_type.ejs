@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login_type
+    </title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-image: url('/bliss_images/bg.png');
+            background-size: 110%;
+            font-family: 'Arial', sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            position: relative;
+            top: 530px;
+        }
+        h1:hover {
+            color: rgb(162 15 61);
+            
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+            position: relative;
+            top: 560px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            font-size: 25px;
+            font-weight: bolder;
+            margin: 0 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            color: Red;
+        }
+
+        #user-button {
+            background-color: wheat;
+            font-size: larger;
+            /* Blue color */
+            width: 200px;
+            height: 50px;
+            border-radius: 30px;
+        }
+
+        #user-button:hover {
+            background-color: rgb(162 15 61);
+            color: #fff;
+            font-size: x-large;
+        }
+
+        #club-button {
+            background-color: wheat;
+            font-size: larger;
+            /* Red color */
+            width: 200px;
+            height: 50px;
+            border-radius: 30px;
+        }
+
+        #club-button:hover {
+            background-color: rgb(162 15 61);
+            color: #fff;
+            font-size: x-large;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Login</h1>
+
+    <div class="button-container">
+        <a href="/login"><button class="button" id="user-button">User</button></a>
+        <a href="/club_login"><button class="button" id="club-button">Club</button></a>
+    </div>
+</body>
+
+</html>

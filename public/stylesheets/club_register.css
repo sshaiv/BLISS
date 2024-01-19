@@ -1,0 +1,148 @@
+ body {
+     background-image: url('/bliss_images/register_bg.png');
+     background-repeat: no-repeat;
+     /* background-size: 100% 100%; */
+ }
+
+ .container {
+     max-width: 410px;
+     margin: 0 auto;
+     padding: 40px;
+     /* background-color: #fff; */
+     border-radius: 50px;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+     position: relative;
+     top: 3rem;
+     right: 50px;
+ }
+
+ h1 {
+     text-align: center;
+     color: #ccc;
+     /* margin-bottom: 30px; */
+
+ }
+
+ input[type="text"],
+ input[type="password"] ,
+ input[type="email"],
+ input[type="number"]{
+     width: 100%;
+     padding: 12px;
+     margin-bottom: 20px;
+     border: 1px solid #ccc;
+     border-radius: 5px;
+
+ }
+
+ select {
+     width: 100%;
+     padding: 12px;
+     margin-bottom: 20px;
+     border: 1px solid #ccc;
+     border-radius: 20px;
+
+ }
+
+
+ /* button[type="submit"] {
+     width: 100%;
+     padding: 12px;
+     border: none;
+     background-color: rgb(162 15 61);
+     color: #fff;
+     cursor: pointer;
+     border-radius: 20px;
+     position: relative;
+     top:20px;
+ } */
+
+ /* input[type="submit"]:hover {
+    background-color: blue;
+} */
+
+
+ h1 {
+     color: #333;
+     text-align: center;
+ }
+
+ #registration-form {
+     display: flex;
+     flex-direction: column;
+ }
+
+ input[type="text"],
+ input[type="password"],
+ input[type="file"] {
+     margin-bottom: 10px;
+     padding: 10px;
+     border: 1px solid #ddd;
+     border-radius: 4px;
+ }
+
+ button[type="submit"] {
+     position: relative;
+     top: 20px;
+     height: 40px;
+     background-color: rgb(162, 15, 61);
+     color: #fff;
+     padding: 10px;
+     border: none;
+     border-radius: 30px;
+
+ }
+
+ button[type="submit"]:hover {
+     cursor: pointer;
+     font-size: larger;
+ }
+
+ .drop-area {
+     position: relative;
+     border: 2px dashed #ddd;
+     border-radius: 4px;
+     cursor: pointer;
+     margin-bottom: 5px;
+     width: 400px;
+     height: 75px;
+ }
+
+ .img-view {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     text-align: center;
+ }
+
+ .img-view img {
+     width: 100px;
+     height: 50px;
+     margin-bottom: 10px;
+ }
+
+ p {
+     font-size: small;
+     position: relative;
+     bottom: 15px;
+ }
+
+ input[type="button"] {
+     position: relative;
+     left: 225px;
+     bottom: 85px;
+     border-radius: 25px;
+     background-color: rgb(162 15 61);
+     color: #fff;
+ }
+
+ input[type="file"] {
+     padding-left: 25%;
+     position: relative;
+     border: 2px dashed #ddd;
+     border-radius: 4px;
+     cursor: pointer;
+     margin-bottom: 5px;
+     width: 400px;
+     height: 75px;
+ }

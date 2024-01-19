@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onboarding Questionnaire</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('bliss_images/plane_bg.png');
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #fff;
+            text-align: center;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        label {
+            display: block;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        input[type="checkbox"]:checked+label {
+            background-color: rgb(162 15 61);
+            color: #fff;
+            border-color: rgb(162 15 61);
+        }
+
+        input[type="Button"] {
+            background-color: rgb(162 15 61);
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            position: relative;
+            top: 10px;
+        }
+
+        input[type="Button"]:hover {
+            background-color: rgb(162 15 61);
+        }
+
+        button {
+            background-color: rgb(162 15 61);
+            color: #fff;
+            padding: 5px;
+            width: 100px;
+            position: relative;
+            left: 450px;
+            bottom: 25px;
+            font-size: 35px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Onboarding Questionnaire for <% if (user) { %><p><%= user.name %></p><% } %></h1> 
+        
+    <form method="post">
+        <div class="container" id="question1">
+            <div class="question">
+                <p> If Jadoo was your bartender today ✨, what would you like to drink ? </p>
+            </div>
+            <div class="options">
+                <input type="checkbox" id="likedrinkOption1" name="likedrink" value="Beer">
+                <label for="likedrinkOption1">Beer</label>
+                <input type="checkbox" id="likedrinkOption2" name="likedrink" value="Large beer">
+                <label for="likedrinkOption2">Large beer</label>
+            </div>
+            <!-- <input type="Button" value="Next" onclick="enableNextQuestion(1)"> -->
+        </div>
+
+
+        <div class="container" id="question2" >
+            <div class="question">
+                <p>Name your favourite Drink 🥂 </p>
+            </div>
+            <div class="options">
+                <input type="checkbox" id="drinkOption1" name="drink" value="Kingfisher">
+                <label for="drinkOption1">Kingfisher</label>
+                <input type="checkbox" id="drinkOption2" name="drink" value="Tuborg">
+                <label for="drinkOption2">Tuborg</label>
+                <input type="checkbox" id="drinkOption3" name="drink" value="Kingfisher">
+                <label for="drinkOption3">Kingfisher</label>
+                <input type="checkbox" id="drinkOption4" name="drink" value="Tuborg">
+                <label for="drinkOption4">Tuborg</label>
+            </div>
+            <!-- <input type="Button" value="Next" onclick="enableNextQuestion(2)" disabled> -->
+        </div>
+
+        <div class="container" id="question3" >
+            <div class="question">
+                <p>Smoking 🚬 </p>
+            </div>
+            <div class="options">
+                <input type="checkbox" id="SmokingOption1" name="Smoking" value="Chain Smoker">
+                <label for="SmokingOption1">Chain Smoker</label>
+                <input type="checkbox" id="SmokingOption2" name="Smoking" value="casual Smoker">
+                <label for="SmokingOption2">Casual Smoker</label>
+                <input type="checkbox" id="SmokingOption3" name="Smoking" value="Moderate Smoker">
+                <label for="SmokingOption3">Moderate Smoker</label>
+            </div>
+            <!-- <input type="Button" value="Next" onclick="enableNextQuestion(3)" disabled> -->
+        </div>
+
+        <div class="container" id="question4" >
+            <div class="question">
+                <p>When I'm drunk🥴 , I'm most likely to _ </p>
+            </div>
+            <div class="options">
+                <input type="checkbox" id="likeOption1" name="like" value="Dance like no one's looking">
+                <label for="likeOption1">Dance like no one's looking</label>
+
+                <input type="checkbox" id="likeOption2" name="like" value="Eat Eat Eat">
+                <label for="likeOption2">Eat Eat Eat</label>
+
+                <input type="checkbox" id="likeOption3" name="like" value="Upload my insta & fb feeds">
+                <label for="likeOption3">Upload my insta & fb feeds</label>
+            </div>
+            <!-- <input type="Button" value="Next" onclick="enableNextQuestion(4)" disabled> -->
+        </div>
+
+
+        <div class="container" id="question5" >
+            <div class="question">
+                <p>What do you look for in the club 🤭? </p>
+            </div>
+            <div class="options">
+                <input type="checkbox" id="lookOption1" name="look" value="I'm alone wolf at the club!">
+                <label for="lookOption1">I'm alone wolf at the club!</label>
+
+                <input type="checkbox" id="lookOption2" name="look" value="I'm looking for a partner">
+                <label for="lookOption2">I'm looking for a partner</label>
+
+                <input type="checkbox" id="lookOption3" name="look" value="Chilin with friends..">
+                <label for="lookOption3">Chilin with friends..</label>
+
+                <input type="checkbox" id="lookOption4" name="look" value="here to get drunk">
+                <label for="lookOption4">here to get drunk</label>
+            </div>
+            <!-- <input type="Button" value="Next" onclick="enableNextQuestion(5)" disabled> -->
+        </div>
+
+
+        <div class="container" id="question6" >
+            <div class="question">
+                <p>How often do you go to the club 🤗? </p>
+            </div>
+            <div class="options">
+                <input type="checkbox" id="whyOption1" name="why" value="Only Weekends ">
+                <label for="whyOption1">Only Weekends </label>
+
+                <input type="checkbox" id="whyOption2" name="why" value="Very Often">
+                <label for="whyOption2">Very Often</label>
+
+                <input type="checkbox" id="whyOption3" name="why" value="Rarely">
+                <label for="whyOption3">Rarely</label>
+
+                <input type="checkbox" id="whyOption4" name="why" value="Only in Ladies Night">
+                <label for="whyOption4">Only in Ladies Night</label>
+            </div>
+            <!-- <input type="Button" value="Next" onclick="enableNextQuestion(6)" disabled> -->
+        </div>
+
+
+        <div class="container" id="question7" >
+            <div class="question">
+                <p>Which club personalities are you 🤩? </p>
+            </div>
+            <div class="options">
+                <input type="checkbox" id="personalityOption1" name="personality"
+                    value="Loves to approach people in the club">
+                <label for="personalityOption1">Loves to approach people in the club</label>
+
+                <input type="checkbox" id="personalityOption2" name="personality" value="Loves to get approached">
+                <label for="personalityOption2">Loves to get approached</label>
+
+                <input type="checkbox" id="personalityOption3" name="personality" value="None of the above">
+                <label for="personalityOption3">None of the above</label>
+            </div>
+            <!-- <input type="Button" value="Next" onclick="enableNextQuestion(7)" disabled> -->
+        </div>
+
+        <div class="container" id="question8" >
+            <div class="question">
+                <p>What kind of music do you prefer 🎶🎶 </p>
+            </div>
+            <div class="options">
+                <input type="checkbox" id="musicOption1" name="music" value="Jazz">
+                <label for="musicOption1">Jazz</label>
+
+                <input type="checkbox" id="musicOption2" name="music" value="Hip Hop">
+                <label for="musicOption2">Hip Hop</label>
+
+                <input type="checkbox" id="musicOption3" name="music" value="Romantic">
+                <label for="musicOption3">Romantic</label>
+            </div>
+            <!-- <input type="Button" value="Next" onclick="enableNextQuestion(8)" disabled> -->
+        </div>
+
+        <div class="container" id="question9" >
+            <div class="question">
+                <p>Relationship Goal 💞 </p>
+            </div>
+            <div class="options">
+                <input type="checkbox" id="relationshipOption1" name="relationship" value="Friendship">
+                <label for="relationshipOption1">Friendship</label>
+
+                <input type="checkbox" id="relationshipOption2" name="relationship" value="Longterm">
+                <label for="relationshipOption2">Longterm</label>
+
+                <input type="checkbox" id="relationshipOption3" name="relationship" value="Serious">
+                <label for="relationshipOption3">Serious</label>
+
+                <input type="checkbox" id="relationshipOption4" name="relationship" value="Fun">
+                <label for="relationshipOption4">Fun</label>
+
+                <input type="checkbox" id="relationshipOption5" name="relationship" value="Not sure">
+                <label for="relationshipOption5">Not sure</label>
+
+                <input type="checkbox" id="relationshipOption6" name="relationship" value="Timepass">
+                <label for="relationshipOption6">Timepass</label>
+
+                <input type="checkbox" id="relationshipOption7" name="relationship" value="Other">
+                <label for="relationshipOption7">Other</label>
+            </div>
+            <!-- <input type="Button" value="Next" onclick="enableNextQuestion(9)" disabled> -->
+        </div>
+
+
+
+        <!-- <input type="submit" value="Save" onclick="showAlert()"> -->
+        <button type="submit" id="btnSubmit" >Save</button>
+
+    </form>
+
+    <script>
+        function enableSubmitButton() {
+            const btnSubmit = document.getElementById('btnSubmit');
+            btnSubmit.removeAttribute('disabled');
+            console.log('Submit button enabled.');
+        }
+
+        function enableNextQuestion(questionNumber) {
+            var currentQuestion = document.getElementById('question' + questionNumber);
+            var nextQuestion = document.getElementById('question' + (questionNumber + 1));
+
+            var checkboxes = currentQuestion.querySelectorAll('input[type="checkbox"]');
+            var isChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+
+            if (isChecked) {
+                currentQuestion.style.display = 'none';
+
+                if (nextQuestion) {
+                    nextQuestion.style.display = 'block';
+                    var nextButton = nextQuestion.querySelector('input[type="Button"]');
+                    nextButton.disabled = false;
+                } else {
+                    currentQuestion.style.display = 'block';
+                    showAlert();
+                    enableSubmitButton();
+                }
+            } else {
+                alert('Please select at least one option before moving to the next question.');
+            }
+        }
+
+        function showAlert() {
+            alert('You have submitted all questions. Thank you!');
+        }
+        
+    </script>
+
+</body>
+
+</html>

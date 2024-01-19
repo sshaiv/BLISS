@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload</title>
+    <link rel="stylesheet" href="/stylesheets/upload_image.css">
+</head>
+
+<body>
+    <form method="post">
+        <div class="hero">
+            <label for="input-file-1" class="drop-area">
+                <input type="file" accept="image/*" id="input-file-1" class="input-file" hidden>
+                <div class="img-view" id="img-view-1">
+                    <img src="/bliss_images/icon.png" alt="Preview" name="image1">
+                    <p>Drag and Drop or click here <br>to upload image</p>
+                    <span>upload any images from desktop</span>
+                </div>
+            </label>
+            <label for="input-file-2" class="drop-area">
+                <input type="file" accept="image/*" id="input-file-2" class="input-file" hidden>
+                <div class="img-view" id="img-view-2">
+                    <img src="/bliss_images/icon.png" alt="Preview" name="image2">
+                    <p>Drag and Drop or click here <br>to upload image</p>
+                    <span>upload any images from desktop</span>
+                </div>
+            </label>
+            <label for="input-file-3" class="drop-area">
+                <input type="file" accept="image/*" id="input-file-3" class="input-file" hidden>
+                <div class="img-view" id="img-view-3">
+                    <img src="/bliss_images/icon.png" alt="Preview" name="image3">
+                    <p>Drag and Drop or click here <br>to upload image</p>
+                    <span>upload any images from desktop</span>
+                </div>
+            </label>
+            <label for="input-file-4" class="drop-area">
+                <input type="file" accept="image/*" id="input-file-4" class="input-file" hidden>
+                <div class="img-view" id="img-view-4">
+                    <img src="/bliss_images/icon.png" alt="Preview" name="image4">
+                    <p>Drag and Drop or click here <br>to upload image</p>
+                    <span>upload any images from desktop</span>
+                </div>
+            </label>
+        </div>
+        <button type="submit" id="btnSubmit">Upload</button>
+    </form>
+
+    <script src="/javascripts/script.js"></script>
+</body>
+
+</html>

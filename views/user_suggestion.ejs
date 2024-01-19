@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('/bliss_images/register_bg.png');
+            color: white;
+        }
+
+        h1 {
+            text-align: center;
+            color: rgb(126, 12, 48);
+        }
+
+        span {
+            color: rgb(126, 12, 48);
+            font-size: 25px;
+            font-weight: bolder;
+        }
+
+        p {
+            color: black;
+        }
+
+        nav {
+            background-color: rgb(162 15 61);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            /* Center the items horizontally */
+        }
+
+        nav a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .container {
+            position: relative;
+            top: 20px;
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .transparent-container {
+            width: 300px;
+            background-color: rgba(255, 255, 255, 0.7);
+            /* Transparent white background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: #fff;
+            /* Set a background color for the circle */
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+        }
+
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-section {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .icons-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .icon {
+            font-size: 30px;
+            color: rgb(126, 12, 48);
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .responsive-image {
+                width: 80%;
+            }
+        }
+    </style>
+    <title>Profile</title>
+</head>
+
+<body>
+
+    <nav>
+        <a href="#"><i class="fas fa-home"></i> Home</a>
+        <a href="#"><i class="fas fa-heart"></i> Like</a>
+        <a href="#"><i class="fas fa-comments"></i> Treat </a>
+        <a href="#"><i class="fas fa-comments"></i> Chat</a>
+        <a href="#"><i class="fas fa-user"></i> Profile</a>
+
+        <div style="position : relative; left : 20rem; color : white">
+            <% if (user) { %>
+                <p>Name: <%= user.name %>
+                </p>
+                <% } %>
+        </div>
+    </nav>
+
+    <h1>Suggestion</h1>
+
+    <div class="container">
+        <div class="transparent-container">
+            <div class="profile-pic">
+                <!-- You can replace the image URL with the actual path to your profile picture -->
+                <img src="/bliss_images/profile_dp.jpeg" alt="Profile Picture">
+            </div>
+
+            <div class="about-section">
+                <span>About 🤗</span>
+                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.</p>
+            </div>
+
+            <div class="icons-container">
+                <i class="fas fa-times-circle icon"></i> <!-- Cancel Icon -->
+                <i class="fas fa-heart icon"></i> <!-- Like Icon -->
+                <i class="fas fa-arrow-circle-right icon"></i> <!-- Next Page Icon -->
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

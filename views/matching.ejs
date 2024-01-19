@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-image: url('/bliss_images/register_bg.png');
+            margin: 0;
+            padding: 0;
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 600px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 500px;
+            height: 500px;
+        }
+
+        h1 {
+            position: relative;
+            left: 5%;
+            color: rgb(126, 12, 48);
+        }
+
+        .images-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 10px;
+            border: 5px solid rgb(126, 12, 48);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            margin-top: 20px;
+            color: #555;
+        }
+
+        button {
+            width: 60%;
+            height: 10%;
+            font-size: 15px;
+            background-color: rgb(126, 12, 48);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            margin-top: 125px;
+        }
+
+        button:hover {
+            cursor: pointer;
+            font-size: large;
+        }
+
+        .back{
+            position: relative;
+            bottom: 40%;
+            right: 30%;
+        }
+    </style>
+    <title>Match Found</title>
+</head>
+
+<body>
+    <div class="back">
+        <a href="#"><i class="fa-solid fa-arrow-left fa-2xl" style="color: #750000;"></i></a>
+    </div>
+    <div class="container">
+        <h1>Hurray! Match Found ❤️</h1>
+
+        <div class="images-container">
+            <img class="profile-image" src="/bliss_images/profile_dp.jpeg" alt="Profile Image 1">
+            <img class="profile-image" src="/bliss_images/profile_dp.jpeg" alt="Profile Image 2">
+        </div>
+
+        <button>Continue to Chat</button>
+    </div>
+    
+</body>
+
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('/bliss_images/plane_bg.png');
+        }
+
+        h1 {
+            text-align: center;
+            color: rgb(232, 232, 162);
+        }
+
+        span {
+            color: rgb(126, 12, 48);
+            ;
+        }
+
+        nav {
+            background-color: rgb(162 15 61);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            /* Center the items horizontally */
+        }
+
+        nav a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .container {
+            position: relative;
+            top: 20px;
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            /* Allow items to wrap to the next line */
+        }
+
+        .image-container {
+            background-color: rgba(255, 156, 156, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* Box shadow for a subtle lift */
+            margin-bottom: 20px;
+            /* Adjusted margin for space between containers */
+            height: 300px;
+            /* Set a specific height for the containers (adjust as needed) */
+        }
+
+        #img1 {
+            width: 200px;
+        }
+
+        .responsive-image {
+            max-width: 100%;
+            height: 195px;
+            display: block;
+            margin: auto;
+            max-width: 200px;
+            /* Adjust the maximum width as needed */
+        }
+
+        .image-heading {
+            font-size: 24px;
+            margin-top: 10px;
+            color: #fff;
+        }
+
+        .action-button {
+
+            padding: 12px 24px;
+            background-color: rgb(162 15 61);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            /* Add a smooth transition effect */
+        }
+
+        .action-button:hover {
+            background-color: rgb(126, 12, 48);
+            /* Darker green on hover */
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .responsive-image {
+                width: 80%;
+
+            }
+        }
+    </style>
+    <title>Home</title>
+</head>
+
+<body>
+
+    <nav>
+        <a href="#"><i class="fas fa-home"></i> Home</a>
+        <a href="#"><i class="fas fa-heart"></i> Like</a>
+        <a href="#"><i class="fas fa-comments"></i> Treat </a>
+        <a href="#"><i class="fas fa-comments"></i> Chat</a>
+        <a href="#"><i class="fas fa-user"></i> Profile</a>
+
+        <div style="position : relative; left : 20rem; color : white">
+            <% if (user) { %>
+                <p>Name: <%= user.name %>
+                </p>
+                <% } %>
+        </div>
+    </nav>
+    <h1>Find your <span>Partner</span> on</h1>
+
+
+
+    <div class="container">
+
+        <div class="image-container">
+            <img id="img1" src="/bliss_images/general_dating.jpeg" alt="Find Date Image" class="responsive-image">
+            <h2 class="image-heading">General Dating</h2>
+            <a href="/user_suggestion"><button class="action-button" o>find your Date 💞</button></a>
+        </div>
+        <div class="image-container">
+            <img id="img2" src="/bliss_images/club_dating.webp" alt="Find Club Partner Image" class="responsive-image">
+            <h2 class="image-heading">Club Partner</h2>
+            <button class="action-button">find your wine Partner🥂</button>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Events</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('/bliss_images/plane_bg.png');
+        }
+
+        nav {
+            background-color: rgb(162 15 61);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: rgb(162 15 61);
+        }
+
+        header {
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .club-card {
+            background-color: #d3d3d3;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            /* margin: 15px; */
+            padding: 15px;
+            width: 350px;
+           
+        }
+
+        .club-image {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: rgb(162 15 61);
+            display: flex;
+            align-items: center;
+            font-size: 1.5em;
+        }
+
+        p {
+            color: #555;
+        }
+
+        .timing {
+            color: rgb(162 15 61);
+            font-weight: bold;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .icon {
+            margin-right: 5px;
+            color: rgb(162 15 61);
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#"><i class="fas fa-home"></i> Home</a>
+        <a href="#"><i class="fas fa-heart"></i> Like</a>
+        <a href="#"><i class="fas fa-comments"></i> Treat </a>
+        <a href="#"><i class="fas fa-comments"></i> Chat</a>
+        <a href="#"><i class="fas fa-user"></i> Profile</a>
+    </nav>
+
+    <header>
+        <!-- <h1><i class="fas fa-glass-cheers icon"></i> Events </h1> -->
+    </header>
+
+    <section>
+        <!-- Club 1 -->
+        <div class="club-card">
+            <img class="club-image" src="/bliss_images/club_dating.webp" alt="Harmony Lounge">
+            <h2><i class="fas fa-star icon"></i> Harmony Lounge</h2>
+            <p>Nestled just around the corner, Harmony Lounge is the epitome of sophistication and style...</p>
+            <p class="timing"><i class="far fa-clock icon"></i> Open: 8:00 PM - 2:00 AM</p>
+            <p class="timing"><i class="fas fa-calendar-alt icon"></i> Date: January 15, 2022</p>
+            <p class="timing"><i class="fas fa-map-marker-alt icon"></i> Location: 123 Main Street</p>
+        </div>
+
+        <!-- Add more club cards as needed -->
+
+    </section>
+  
+</body>
+</html>
