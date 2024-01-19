@@ -1,4 +1,4 @@
-# smooze
+# BLISS
 ## How to run the code :- 
 
 > first run command : **npm install**  
